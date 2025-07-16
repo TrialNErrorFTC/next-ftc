@@ -13,26 +13,11 @@ import org.firstinspires.ftc.teamcode.example.subsystem.Extension;
 @Autonomous(name = "NextFTC Autonomous Program Java")
 public class AutonomousProgram extends NextFTCOpMode {
     public AutonomousProgram() {
-        super(Claw.INSTANCE, Extension.INSTANCE);
-    }
-
-    public Command firstRoutine() {
-        return new SequentialGroup(
-                Extension.INSTANCE.toHigh(),
-                new ParallelGroup(
-                        Extension.INSTANCE.toMiddle(),
-                        Claw.INSTANCE.close()
-                ),  
-                new Delay(0.5),
-                new ParallelGroup(
-                        Claw.INSTANCE.open(),
-                        Extension.INSTANCE.toLow()
-                )
-        );
+        super(Extension.INSTANCE);
     }
 
     @Override
     public void onStartButtonPressed() {
-        firstRoutine().invoke();
+        Extension.INSTANCE.toLow();
     }
 }
