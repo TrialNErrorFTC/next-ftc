@@ -1,6 +1,8 @@
 package org.firstinspires.ftc.teamcode.example.subsystem;
 
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.rowanmcalpin.nextftc.core.Subsystem;
+import com.rowanmcalpin.nextftc.core.command.Command;
 import com.rowanmcalpin.nextftc.core.control.controllers.PIDFController;
 import com.rowanmcalpin.nextftc.core.control.controllers.feedforward.StaticFeedforward;
 import com.rowanmcalpin.nextftc.ftc.hardware.controllables.MotorEx;
@@ -15,12 +17,14 @@ public class Angle extends Subsystem {
     public MotorEx motorAngleRight;
     public MotorEx motorAngleLeft;
     public PIDFController controller = new PIDFController(10, 0.049988, 0.0, new StaticFeedforward(0.0));
-    MotorGroup angleMotorGroup = new MotorGroup(motorAngleRight, motorAngleLeft);
-
-
-    @Override
+    MotorGroup motorAngleGroup;
+    public Command toVertical{
+        return new
+    }
     public void initialize() {
         motorAngleLeft = new MotorEx("motorAngleLeft");
         motorAngleRight = new MotorEx("motorAngleRight");
+         motorAngleGroup = new MotorGroup(motorAngleRight, motorAngleLeft);
+        motorAngleLeft.setDirection(DcMotorSimple.Direction.REVERSE);
     }
 }
